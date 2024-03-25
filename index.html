@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>js using form validation</title>
+</head>
+<body>
+    <h1>Fill the form</h1>
+    <form name="form1" method="post" onsubmit="return validate()">
+        <label>Username:</label>
+        <input type="text" name="username" id="username"><br><br>
+        <label>Email:</label>
+        <input type="email" name="email" id="email"><br><br>
+        <label>Password:</label>
+        <input type="password" name="password" id="password"><br><br>
+        <label>Confirm Password:</label>
+        <input type="password" name="repassword" id="repassword"><br><br>
+        <input type="submit" value="Register">
+    </form>
+
+    <script>
+        function validate() {
+            var username = document.getElementById("username");
+            console.log(username,"hiiiiiiiiiiiiiiiiiii")
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+            var repassword = document.getElementById("repassword");
+
+            if (username.value.trim() === "") {
+                alert("Username cannot be empty.");
+                username.focus();
+                return false;
+            }
+            if (email.value === "") {
+                alert("Email is required.");
+                email.focus();
+                return false;
+            }
+            if (password.value === "") {
+                alert("Password is required.");
+                password.focus();
+                return false;
+            }
+            if (repassword.value === "") {
+                alert("Please confirm your password.");
+                repassword.focus();
+                return false;
+            }
+            if (repassword.value !== password.value) {
+                alert("Passwords do not match.");
+                repassword.focus();
+                return false;
+            }
+
+            alert("Registration successfully completed.");
+            return true;
+        }
+    </script>
+</body>
+</html>
